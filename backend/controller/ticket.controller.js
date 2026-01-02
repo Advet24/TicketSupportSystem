@@ -77,3 +77,8 @@ export const getRecentTickets = async (req, res) => {
         res.status(500).json({ message: err.message });
     }
 };
+
+export const getTicketReplies = async (req, res) => {
+    const [rows] = await getRepliesByTicket(req.params.id);
+    res.json(rows);
+};

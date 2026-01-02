@@ -10,7 +10,7 @@ export const getTicketsByUser = (user_id) =>
     pool.query("SELECT * FROM tickets WHERE user_id=?", [user_id]);
 
 export const getAllTickets = () =>
-    pool.query("SELECT * FROM tickets");
+    pool.query("SELECT t.*, u.name AS user_name FROM tickets t JOIN users u ON u.id = t.user_id");
 
 export const getTicketById = (id) =>
     pool.query("SELECT * FROM tickets WHERE id=?", [id]);
@@ -47,6 +47,13 @@ export const getRecentTicketsByUser = (userId) =>
     );
 
 export const getRecentTicketsAll = () =>
-    pool.query(
-        "SELECT * FROM tickets ORDER BY created_at DESC LIMIT 10"
-    );
+    pool.query(`
+    SELECT 
+      t.*, 
+      u.name AS user_name
+    FROM tickets t
+    JOIN users u ON u.id = t.user_id
+    ORDER BY t.created_at DESC
+    LIMIT 5
+  `);
+

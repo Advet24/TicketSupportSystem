@@ -1,4 +1,4 @@
-import pool  from "../config/db.js";
+import pool from "../config/db.js";
 
 export const insertReply = (ticket_id, user_id, message) =>
     pool.query(
@@ -8,9 +8,15 @@ export const insertReply = (ticket_id, user_id, message) =>
 
 export const getRepliesByTicket = (ticket_id) =>
     pool.query(
-        `SELECT r.*, u.name 
-     FROM ticket_replies r 
-     JOIN users u ON u.id=r.user_id
-     WHERE ticket_id=?`,
+        `SELECT 
+            r.*, 
+            u.name, 
+            u.role
+        FROM ticket_replies r 
+        JOIN users u ON u.id = r.user_id
+        WHERE r.ticket_id = ?
+        ORDER BY r.created_at ASC`,
         [ticket_id]
     );
+
+

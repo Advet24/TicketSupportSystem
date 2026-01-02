@@ -1,105 +1,88 @@
-.ticket-layout {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #eef3ff, #e8f0ff);
-    display: flex;
-    justify-content: center;
-    padding: 40px 16px;
-    font-family: "Inter", system-ui, -apple-system, Arial, sans-serif;
+.ticket-thread{
+  margin-top: 25px;
 }
 
-/* Main Card */
-.ticket-card {
-    background: white;
-    border-radius: 18px;
-    box-shadow:
-        0 20px 40px rgba(0, 0, 0, 0.08),
-        0 0 0 0.5px rgba(0, 0, 0, 0.05);
-    padding: 26px 30px;
-    width: 780px;
+/* Chat container */
+.reply-box{
+  max-width: 70%;
+  padding: 12px 14px;
+  border-radius: 16px;
+  margin: 10px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  position: relative;
 }
 
-/* Ticket Header */
-.ticket-title {
-    margin-bottom: 4px;
-    color: #0f172a;
+/* USER → LEFT */
+.user-reply{
+  background:#f0f2f5;
+  border:1px solid #e5e7eb;
+  margin-right:auto;
+  border-top-left-radius: 4px;
 }
 
-.ticket-desc {
-    margin-top: 0;
-    color: #6b7280;
-    margin-bottom: 18px;
+/* ADMIN → RIGHT */
+.admin-reply{
+  background:#dbeafe;
+  border:1px solid #93c5fd;
+  margin-left:auto;
+  border-top-right-radius: 4px;
 }
 
-/* Section label */
-.section-title {
-    color: #111827;
-    margin-bottom: 10px;
+/* Name + Timestamp row */
+.reply-header{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  margin-bottom:6px;
+  color:#374151;
 }
 
-/* Chat area */
-.thread-box {
-    max-height: 420px;
-    overflow-y: auto;
-    padding-right: 6px;
+/* Message text */
+.reply-message{
+  font-size:15px;
+  line-height:1.4;
 }
 
-/* Message container */
-.message {
-    margin-bottom: 12px;
+/* Timestamp subtle */
+.reply-time{
+  color:#6b7280;
 }
 
-/* name label */
-.message-author {
-    font-weight: 600;
-    font-size: 13px;
-    color: #374151;
+/* Reply box (input) */
+.reply-form{
+  margin-top:20px;
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
 }
 
-/* bubble */
-.message-text {
-    margin-top: 4px;
-    background: #f3f4f6;
-    padding: 10px 12px;
-    border-radius: 12px;
-    font-size: 14px;
-    color: #111827;
-    width: fit-content;
-    max-width: 80%;
+.reply-form textarea{
+  width:420px;
+  height:70px;
+  padding:10px;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  resize:none;
+  font-size:14px;
 }
 
-/* Reply area */
-.reply-area {
-    margin-top: 14px;
-    display: flex;
-    gap: 10px;
+.reply-form textarea:focus{
+  outline:none;
+  border-color:#2563eb;
 }
 
-.reply-area input {
-    flex: 1;
-    padding: 11px 12px;
-    border-radius: 10px;
-    border: 1px solid #d1d5db;
-    font-size: 14px;
-    outline: none;
+/* Button */
+.reply-form button{
+  padding:10px 16px;
+  border-radius:10px;
+  border:0;
+  background:#2563eb;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:500;
 }
 
-.reply-area input:focus {
-    border-color: #4f46e5;
-    box-shadow: 0 0 0 1px #4f46e5;
-    background: white;
-}
-
-.reply-area button {
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: none;
-    background: #111827;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-.reply-area button:hover {
-    background: black;
+.reply-form button:hover{
+  background:#1d4ed8;
 }

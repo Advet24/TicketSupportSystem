@@ -7,6 +7,9 @@ import AdminDashboard from "./pages/AdminDashboard";
 import TicketThread from "./pages/TicketThread";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Dashboard from "./pages/Dashboard";
+import AdminUsers from "./pages/AdminUsers";
+import AdminTickets from "./pages/AdminTickets";
+import UserTickets from "./pages/UserTickets";
 
 function App() {
 
@@ -42,6 +45,24 @@ function App() {
         />
 
         <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute>
+              <AdminUsers />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/admin/alltickets"
+          element={
+            <ProtectedRoute>
+              <AdminTickets />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
           path="/tickets/create"
           element={
             <ProtectedRoute>
@@ -54,7 +75,7 @@ function App() {
           path="/tickets"
           element={
             <ProtectedRoute>
-              {/* <MyTickets /> */}
+              <UserTickets />
             </ProtectedRoute>
           }
         />
@@ -63,10 +84,11 @@ function App() {
           path="/tickets/:id"
           element={
             <ProtectedRoute>
-              {/* <TicketDetails /> */}
+              <TicketThread />
             </ProtectedRoute>
           }
         />
+
 
         {/* Default Redirect */}
         <Route path="*" element={<Login />} />

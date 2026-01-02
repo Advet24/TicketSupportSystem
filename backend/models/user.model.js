@@ -10,7 +10,7 @@ export const createUser = (name, email, password) =>
     );
 
 export const getAllUsers = () =>
-    pool.query("SELECT id,name,email,role FROM users");
+    pool.query("SELECT id,name,email,role,created_at FROM users");
 
 export const countUsers = () =>
     pool.query("SELECT COUNT(*) AS total FROM users");

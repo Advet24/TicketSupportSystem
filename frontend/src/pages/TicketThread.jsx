@@ -1,6 +1,7 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import Layout from "../components/Layout";
 import "../styles/TicketThread.css";
 
 function TicketThread() {
@@ -11,56 +12,81 @@ function TicketThread() {
     const [data, setData] = useState(null);
     const [message, setMessage] = useState("");
 
+    useEffect(() => {
+        load();
+    }, []);
+
     const load = async () => {
-        const res = await axios.get(`http://localhost:3000/tickets/${id}`, {
-            headers: { Authorization: `Bearer ${token}` }
-        });
+        const res = await axios.get(
+            `http://localhost:3000/api/tickets/${id}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+        );
         setData(res.data);
     };
 
-    const send = async () => {
-        await axios.post(`http://localhost:3000/tickets/${id}/respond`,
+    const sendReply = async () => {
+        if (!message.trim()) return;
+
+        await axios.post(
+            `http://localhost:3000/api/tickets/${id}/reply`,
             { message },
             { headers: { Authorization: `Bearer ${token}` } }
         );
+
         setMessage("");
         load();
     };
 
-    useEffect(() => { load(); }, []);
-    if (!data) return "Loading...";
+    if (!data) return <Layout>Loading...</Layout>;
+
+    const t = data.ticket;
 
     return (
-        <div className="ticket-layout">
-            <div className="ticket-card">
+        <Layout>
 
-                <h3 className="ticket-title">{data.ticket.title}</h3>
-                <p className="ticket-desc">{data.ticket.description}</p>
+            <div className="ticket-container">
 
-                <h4 className="section-title">Conversation</h4>
 
-                <div className="thread-box">
-                    {data.responses.map(r => (
-                        <div className="message" key={r.id}>
-                            <div className="message-author">{r.name}</div>
-                            <div className="message-text">{r.message}</div>
+
+                <div className="ticket-thread">
+                    <h4>Conversation</h4>
+
+                    {data.replies.map(r => (
+                        <div
+                            key={r.id}
+                            className={`reply-box ${r.role === "ADMIN" ? "admin-reply" : "user-reply"}`}
+                        >
+                            <div className="reply-header">
+                                <strong>
+                                    {r.name} {r.role === "ADMIN" && "(Support)"}
+                                </strong>
+
+                                <span className="reply-time">
+                                    {new Date(r.created_at).toLocaleString()}
+                                </span>
+                            </div>
+
+                            <div className="reply-message">
+                                {r.message}
+                            </div>
                         </div>
                     ))}
+
                 </div>
 
-                <div className="reply-area">
-                    <input
+                <div className="reply-form">
+                    <textarea
+                        placeholder="Write a reply..."
                         value={message}
-                        onChange={e => setMessage(e.target.value)}
-                        placeholder="Type your reply..."
+                        onChange={(e) => setMessage(e.target.value)}
                     />
-                    <button onClick={send}>Reply</button>
+                    <button onClick={sendReply}>Send Reply</button>
                 </div>
 
             </div>
-        </div>
-    );
 
+        </Layout>
+    );
 }
 
-export default TicketThread
+export default TicketThread;

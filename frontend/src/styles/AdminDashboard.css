@@ -6,6 +6,7 @@
   justify-content: center;
   padding: 40px 16px;
   font-family: "Inter", system-ui, -apple-system, Arial, sans-serif;
+  
 }
 
 /* Main Wrapper */
@@ -75,4 +76,18 @@
 .badge.pending {
   background: #fef3c7;
   color: #92400e;
+}
+
+.stat-card{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.stat-icon{
+  background:#f1f5f9;
+  padding:10px;
+  border-radius:12px;
+  font-size:22px;
+  color:#2563eb;
 }
