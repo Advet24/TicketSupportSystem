@@ -1,0 +1,116 @@
+/* Page layout */
+.dashboard-layout {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef3ff, #e8f0ff);
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
+  font-family: "Inter", system-ui, -apple-system, Arial, sans-serif;
+}
+
+/* Main container */
+.dashboard-card {
+  background: white;
+  border-radius: 18px;
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.08),
+    0 0 0 0.5px rgba(0,0,0,0.05);
+  padding: 26px 30px;
+  width: 780px;
+}
+
+/* Heading */
+.dashboard-card h2 {
+  margin-bottom: 12px;
+  color: #0f172a;
+}
+
+/* Section title */
+.section-title {
+  margin-top: 20px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Inputs layout */
+.form-row {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.dashboard-card input,
+.dashboard-card textarea {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  outline: none;
+  font-size: 14px;
+  background: #f9fafb;
+}
+
+.dashboard-card textarea {
+  resize: none;
+  height: 90px;
+}
+
+.dashboard-card input:focus,
+.dashboard-card textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 1px #4f46e5;
+  background: white;
+}
+
+/* Button */
+.dashboard-card button {
+  margin-top: 6px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: #111827;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.dashboard-card button:hover {
+  background: black;
+}
+
+/* Ticket list */
+.ticket-list {
+  list-style: none;
+  padding: 0;
+  margin-top: 16px;
+}
+
+/* Ticket item */
+.ticket-item {
+  margin-bottom: 10px;
+}
+
+.ticket-box {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #111827;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  transition: 0.2s ease;
+}
+
+.ticket-box:hover {
+  background: white;
+  border-color: #2563eb;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+/* Ticket meta text */
+.ticket-meta {
+  color: #6b7280;
+  font-size: 13px;
+}

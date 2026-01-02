@@ -1,0 +1,33 @@
+.navbar{
+  height:60px;
+  background:#ffffff;
+  border-bottom:1px solid #e5e7eb;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+}
+
+.navbar-left h2{
+  font-size:18px;
+  margin:0;
+}
+
+.navbar-right{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.navbar-right span{
+  font-weight:500;
+}
+
+.navbar-right button{
+  background:#2563eb;
+  color:white;
+  border:none;
+  padding:7px 12px;
+  border-radius:6px;
+  cursor:pointer;
+}
